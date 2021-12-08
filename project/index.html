@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>MIS3502 Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 References -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Link to FontAwesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="css/app.css">
+    <!-- Your custom JavaScript -->
+    <script src="js/app.js"></script>
+
+    <!-- Link to image for the favicon -->
+    <link rel="icon" href="images/TU100x100.png">
+</head>
+
+<body>
+
+<!-- Top Navigation Bar -->
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Logo -->
+      <a class ="navbar-brand" href="index.html">
+          <img alt="Temple" src="images/TU100x100.png" style="width:40px;">
+          &nbsp;&nbsp;Bookkeeping
+      </a>
+
+    <!-- Toggler Icon for responsiveness -->
+    <button id="toggle-icon" class="navbar-toggler secured" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <!--Menu sets on the left -->
+        <ul class="navbar-nav mr-auto">
+        </ul>
+    <!--Menu sets on the right -->
+    <!--Each individual item can be secured by adding the class: secured -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item secured">
+                <a id="link-main" class="nav-link" href="#div-main"><i class="fa fa-list"></i> Book Statement </a>
+            </li>
+            <li class="nav-item secured">
+                <a id="link-add" class="nav-link" href="#div-add"><i class="fa fa-plus"></i> Add a statement </a>
+            </li>
+            <li class="nav-item secured">
+                <a id="link-report" class="nav-link" href="#div-report"><i class="fa fa-link"></i> Report </a>
+            </li>
+            <li class="nav-item secured">
+                <a id="link-logout" class="nav-link" href="#div-login"><i class="fa fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>    
+    </div>
+</nav>
+
+<br><br><br><br>
+
+<!--Start container for BS4 (Bootstrap 4) formatting-->
+<div class="container-fluid">
+
+    <div class="row text-center">
+        <div class="col-md-12">
+			&nbsp; <!-- place holder for additional top row content -->
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-2"></div>
+
+		<div class="col-md-8 content-wrapper " id="div-login" style="display: none;">
+                <form id='form-login'>
+				<label for="username">User name:</label>
+				<input type="text" name="username" id="username" class="form-control" autocomplete="off">
+				<label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" autocomplete="off">
+                <br>
+				<div class="text-center">
+				<input type="button" value="Login" name="btnLogin" id="btnLogin" class="btn btn-primary" style="font-size:2em;width:100%;" >
+                </div>
+                <br>
+                <div id='login_message' class="">
+                </div>
+			</form>
+		</div>
+
+		<div class="col-md-8 content-wrapper " id="div-main" style="display: none;">
+            <h2>Book Statement</h2>
+            <div id="main">
+            <form id="sum" class="text-right">
+            Total Income: $<span id="incomesum" name="sum(amount)"></span> | Expense: $<span id="expensesum" name="sum(amount)"></span>
+            </form>
+            <table id="table-bill" class="table table-bordered">
+            </table>
+            </div>
+            <div class="text-center">
+		        <input type="button" value="Add a statement" id="addbill" class="btn btn-primary" style="font-size:2em;width:100%;" >
+            </div>
+		</div>
+		
+		<div class="col-md-8 content-wrapper " id="div-add" style="display: none;">
+            <h2>Add a statement</h2>
+            <form id="form-add">
+            Description:
+            <input type="text" id="add-description" name="description" autocomplete="off"> <br><br>
+            Status:
+            <select id="add-status" name="status">
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select> <br><br>
+            Amount:
+            <input type="text" id="add-amount" name="amount" autocomplete="off"> <br><br>
+            Method:
+            <select id="add-method" name="method">
+                <option value="Other">Other</option>
+                <option value="Cash">Cash</option>
+                <option value="Check">Check</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+            </select> <br><br>
+            Category:
+            <select id="add-category" name="category">
+                <option value="Other">Other</option>
+                <option value="Beauty">Beauty</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Finance">Finance</option>
+                <option value="Food & Drink">Food/Drink</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Health">Health</option>
+                <option value="Housing">Housing</option>
+                <option value="Pets">Pets</option>
+                <option value="Refund">Refund</option>
+                <option value="Transfer">Transfer</option>
+                <option value="Transportation">Transportation</option>
+            </select> <br><br>
+            Date (format: yyyy-MM-dd):
+            <input type="text" id="add-date" name="date" autocomplete="off"> <br>
+            </form> <br><br>
+            <input type="button" id="btnAddBill" name="addbill" value="Add a statement" class="btn btn-primary" style="font-size:2em;width:100%;"> <br><br>
+            <input type="button" id="btnAddCancel" name="cancel" value="Cancel" class="btn btn-danger" style="font-size:2em;width:100%;">
+		</div>
+		
+		<div class="col-md-8 content-wrapper " id="div-detail" style="display: none;">
+            <div style="font-size: 2em;">
+            Description: <span id="detail-description"></span> <br>
+            </div>
+            Status: <span id="detail-status"></span> <br>
+            Amount: <span id="detail-amount"></span> <br>
+            Method: <span id="detail-method"></span> <br>
+            Category: <span id="detail-category"></span> <br>
+            Date: <span id="detail-date"></span> <br><br>
+            <form id="form-detail">
+                <input type="text" id="detail-billid" name="billid">
+            </form> <br>
+            <input type="button" id="GoBack" name="GoBack" value="Go Back" class="btn btn-primary" style="font-size:2em;width:100%;"> <br><br>
+            <input type="button" id="Delete" name="Delete" value="Delete" class="btn btn-danger" style="font-size:2em;width:100%;">
+		</div>
+
+        <div class="col-md-8 content-wrapper " id="div-report" style="display: none;">
+            <h2>Report</h2>
+            <div id="report"></div>
+            <div class="text-center">
+                <img id="incomechart" src="https://image-charts.com/chart">
+            </div>
+            <div class="text-center">
+                <img id="expensechart" src="https://image-charts.com/chart">
+            </div>
+		</div>
+
+    <div class="col-md-2"></div>
+    </div>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div>
+            &nbsp;
+        </div>
+    </div>
+</div>
+
+</div> <!-- container //-->
+
+<br>
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            &copy; 2021 MIS3502 Project by Anni Cao
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+				&nbsp; <!-- place holder for additional footer content -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
