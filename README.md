@@ -8,4 +8,4 @@ Users can see the total amount of the bills grouped by categories on the charts 
 The reason I chose this API is that it summarizes the bills by numbers, which helps users to see the proportion of different categories.
 I think using a graph for the report is better than a text explanation.
 
-https://www.youtube.com/watch?v=VnPSOFvxbkg
+https://youtu.be/5YrPH6lZmlE
